@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- functional components -->
+    <!-- functional component of exercise 14-->
+    <div id ="root">
+
+    </div>
+
+    <!-- Babel is a javascript compiler-->
+<script type="text/babel">  
+        let rootNode = ReactDOM.createRoot(root);
+
+        // functional props comp for exercise 14
+        let MyFunComp = (props) => { // initialized props element so it can be called into fxn
+            return (
+                <div> 
+                    <h1>Hello, {props.firstN + " " + props.lastN}! </h1>
+                </div>
+            );  
+        }
+
+        // need to retrieve files from myclasscomp, not mandatory
+        // class props comp for exercise 14
+        class MyClassComp extends React.Component{
+
+            constructor(props){ //initializing a construcotr
+                super(props); // refers to funcomp props, must be first line in constructor!
+            }
+            render(){
+                return ( //entering my json script
+                    <div>
+                        <h1>From Class Components</h1>
+                        <h2> Hello {this.props.firstN} + " " + {this.props.lastN} ! </h2> {/* displays first and last name */}
+                    </div>
+                );
+            }
+        }       
+
+        // just pass the name_component after the function comp to pass it
+        // this is where you specify what is going to be claled in myFunComp
+        // no need for rootnode initialization
+        // ([<Comp_name />, <Comp2_name/>])
+        rootNode.render([<MyFunComp firstN= "Mingyu" lastN = "Kim"/>, // to be displayed in code
+            <MyClassComp firstN = "Jeon" lastN = "Jungkook"/>] // added a second component
+        )
+        
+    </script>
+</body>
+</html>
